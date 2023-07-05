@@ -35,20 +35,30 @@ function getComputerChoice() {
   return choice;
 }
 
-function getPlayerChoice() {
-  return prompt('Input your choice:');
+function checkPlayerChoice (choice) {
+  return ((choice === 'Rock' || choice === 'Paper' || choice === 'Scissors') ? choice : 0 ) //check if choice is rock-paper-scissors and return it if true or return 0 if false
 }
 
-function editPlayerChoice() {
-  let lowercasePlayerInput = getPlayerChoice().toLowerCase(); //make player choice lowercase
-  let uppercaseFirstLetter = (lowercasePlayerInput.slice(0, 1)).toUpperCase(); //slice off first letter and make it uppercase
-  let restOfWord = lowercasePlayerInput.slice(1); //get rest of the player choice (exclude first letter)
+function uppercaseFirstLetter (word) {
+  let lowercaseWord = word.toLowerCase(); //make word lowercase
+  let uppercaseFirstLetter = (lowercaseWord.slice(0, 1)).toUpperCase(); //slice off first letter and make it uppercase
+  let restOfWord = lowercaseWord.slice(1); //get rest of the word (exclude first letter)
   return (uppercaseFirstLetter + restOfWord); //join first (uppercase) letter and rest of the word (lowercase)
 }
 
-function checkPlayerChoice() {
-  let editedPlayerChoice = editPlayerChoice();
-  return ((editedPlayerChoice === 'Rock' || editedPlayerChoice === 'Paper' || editedPlayerChoice === 'Scissors') ? editedPlayerChoice : 0 ) //check if player choice is rock-paper-scissors and return it if true or return 0 if false
+function getPlayerChoice() {
+  let playerInput = prompt('Input your choice:');
+  if (checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) {
+    return uppercaseFirstLetter(playerInput);
+  }
+  return 'play the game man';
 }
 
-console.log(checkPlayerChoice());
+/*function singleRound (playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return 'Tie!';
+  }
+  return ('computer choice: ' + computerSelection);
+}*/
+
+console.log(getPlayerChoice());
