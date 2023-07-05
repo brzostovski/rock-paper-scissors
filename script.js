@@ -18,7 +18,7 @@ Algorithm:
   5b. Pick winner of the whole game
 */
 
-function getComputerChoice () {
+function getComputerChoice() {
   let randomNumber = Math.floor(Math.random() * 3); //generate random value between 0 and 1; multiply it by 3 and round down to whole number
   let choice = "";
   switch (randomNumber) { //assign rock-paper-scissors to values 0-1-2
@@ -35,19 +35,20 @@ function getComputerChoice () {
   return choice;
 }
 
-function getPlayerChoice () {
-  return prompt('Input your choice: ');
+function getPlayerChoice() {
+  return prompt('Input your choice:');
 }
 
-function checkPlayerChoice (playerInput) {
-  let lowercasePlayerInput = playerInput.toLowerCase(); //make player choice lowercase
+function editPlayerChoice() {
+  let lowercasePlayerInput = getPlayerChoice().toLowerCase(); //make player choice lowercase
   let uppercaseFirstLetter = (lowercasePlayerInput.slice(0, 1)).toUpperCase(); //slice off first letter and make it uppercase
   let restOfWord = lowercasePlayerInput.slice(1); //get rest of the player choice (exclude first letter)
-  let editedPlayerInput = uppercaseFirstLetter + restOfWord; //join first (uppercase) letter and rest of the word (lowercase)
-
-  return ((editedPlayerInput === 'Rock' || editedPlayerInput === 'Paper' || editedPlayerInput === 'Scissors') ? editedPlayerInput : 0 ) //check if player choice is rock-paper-scissors and return it if true or return 0 if false
+  return (uppercaseFirstLetter + restOfWord); //join first (uppercase) letter and rest of the word (lowercase)
 }
 
+function checkPlayerChoice() {
+  let editedPlayerChoice = editPlayerChoice();
+  return ((editedPlayerChoice === 'Rock' || editedPlayerChoice === 'Paper' || editedPlayerChoice === 'Scissors') ? editedPlayerChoice : 0 ) //check if player choice is rock-paper-scissors and return it if true or return 0 if false
+}
 
-
-console.log(checkPlayerChoice(getPlayerChoice()));
+console.log(checkPlayerChoice());
