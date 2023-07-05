@@ -18,3 +18,21 @@ Algorithm:
   5b. Pick winner of the whole game
 */
 
+function getComputerChoice () {
+  let randomNumber = Math.floor(Math.random() * 3); //generate random value between 0 and 1; multiply it by 3 and round down to whole number
+  let choice = "";
+  switch (randomNumber) {
+    case 0:
+      choice = 'Rock';
+      break;
+    case 1:
+      choice = 'Paper';
+      break;
+    case 2:
+      choice = 'Scissors';
+      break;
+  }
+  return choice;
+}
+
+//console.log(getComputerChoice());
