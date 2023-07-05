@@ -48,17 +48,17 @@ function uppercaseFirstLetter (word) {
 
 function getPlayerChoice() {
   let playerInput = prompt('Input your choice:');
-  if (checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) {
-    return uppercaseFirstLetter(playerInput);
-  }
-  return 'play the game man';
+  return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ? uppercaseFirstLetter(playerInput) : 0);
 }
 
-/*function singleRound (playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
+function singleRound (playerSelection, computerSelection) {
+  if (!playerSelection) {
+    return 'play the game man';
+  }
+  else if (playerSelection === computerSelection) {
     return 'Tie!';
   }
   return ('computer choice: ' + computerSelection);
-}*/
+}
 
-console.log(getPlayerChoice());
+console.log(singleRound(getPlayerChoice(), getComputerChoice()));
