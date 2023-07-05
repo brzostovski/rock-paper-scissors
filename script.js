@@ -58,6 +58,11 @@ function singleRound (playerSelection, computerSelection) {
   else if (playerSelection === computerSelection) {
     return 'Tie!';
   }
+  else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') ||
+  (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
+  (playerSelection === 'Rock' && computerSelection === 'Paper')) {
+    return ('Computer selection' + computerSelection + '. You loose.');
+  }
   return ('computer choice: ' + computerSelection);
 }
 
