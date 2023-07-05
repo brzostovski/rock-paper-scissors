@@ -40,7 +40,14 @@ function getPlayerChoice () {
 }
 
 function checkPlayerChoice (playerInput) {
-  let lowercasePlayerInput = playerInput.toLowerCase();
+  let lowercasePlayerInput = playerInput.toLowerCase(); //make player choice lowercase
+  let uppercaseFirstLetter = (lowercasePlayerInput.slice(0, 1)).toUpperCase(); //slice off first letter and make it uppercase
+  let restOfWord = lowercasePlayerInput.slice(1); //get rest of the player choice (exclude first letter)
+  let editedPlayerInput = uppercaseFirstLetter + restOfWord; //join first (uppercase) letter and rest of the word (lowercase)
+
+  return ((editedPlayerInput === 'Rock' || editedPlayerInput === 'Paper' || editedPlayerInput === 'Scissors') ? editedPlayerInput : 0 ) //check if player choice is rock-paper-scissors and return it if true or return 0 if false
 }
 
-console.log(getPlayerChoice());
+
+
+console.log(checkPlayerChoice(getPlayerChoice()));
