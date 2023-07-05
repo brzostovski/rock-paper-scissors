@@ -21,7 +21,7 @@ Algorithm:
 function getComputerChoice () {
   let randomNumber = Math.floor(Math.random() * 3); //generate random value between 0 and 1; multiply it by 3 and round down to whole number
   let choice = "";
-  switch (randomNumber) {
+  switch (randomNumber) { //assign rock-paper-scissors to values 0-1-2
     case 0:
       choice = 'Rock';
       break;
@@ -35,4 +35,12 @@ function getComputerChoice () {
   return choice;
 }
 
-//console.log(getComputerChoice());
+function getPlayerChoice () {
+  return prompt('Input your choice: ');
+}
+
+function checkPlayerChoice (playerInput) {
+  let lowercasePlayerInput = playerInput.toLowerCase();
+}
+
+console.log(getPlayerChoice());
