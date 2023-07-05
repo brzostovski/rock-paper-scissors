@@ -61,9 +61,9 @@ function singleRound (playerSelection, computerSelection) {
   else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') ||
   (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
   (playerSelection === 'Rock' && computerSelection === 'Paper')) {
-    return ('Computer selection' + computerSelection + '. You loose.');
+    return ('Computer selection: ' + computerSelection + '. You loose.');
   }
-  return ('computer choice: ' + computerSelection);
+  else return ('Computer selection: ' + computerSelection + '. You win!');
 }
 
 console.log(singleRound(getPlayerChoice(), getComputerChoice()));
