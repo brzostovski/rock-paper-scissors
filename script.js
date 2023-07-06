@@ -47,23 +47,29 @@ function uppercaseFirstLetter (word) {
 }
 
 function getPlayerChoice() {
-  let playerInput = prompt('Input your choice:');
-  return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ? uppercaseFirstLetter(playerInput) : 0);
+  let playerInput = prompt('Input your choice:'); //ask player for input in prompt
+  return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ? uppercaseFirstLetter(playerInput) : 0); //check if input is valid (rock-paper-scissors). If yes return it in correct format
 }
 
 function singleRound (playerSelection, computerSelection) {
   if (!playerSelection) {
-    return 'play the game man';
+    return 'play the game man'; //return that if player input is not valid
   }
-  else if (playerSelection === computerSelection) {
+  else if (playerSelection === computerSelection) { //check for tie
     return 'Tie!';
   }
-  else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') ||
+  else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') || //check for player losing
   (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
   (playerSelection === 'Rock' && computerSelection === 'Paper')) {
     return ('You Lose! ' + computerSelection + ' beats ' + playerSelection);
   }
-  return ('You Win! ' + playerSelection + ' beats ' + computerSelection);
+  return ('You Win! ' + playerSelection + ' beats ' + computerSelection); //if above conditions are not met, this means that player wins
 }
 
-console.log(singleRound(getPlayerChoice(), getComputerChoice()));
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    console.log(i);
+  }
+}
