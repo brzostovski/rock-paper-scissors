@@ -53,23 +53,57 @@ function getPlayerChoice() {
 
 function singleRound (playerSelection, computerSelection) {
   if (!playerSelection) {
-    return 'play the game man'; //return that if player input is not valid
+    //return 'play the game man'; //return that if player input is not valid
+    return 0; //0 means invalid input
   }
   else if (playerSelection === computerSelection) { //check for tie
-    return 'Tie!';
+    //return 'Tie!';
+    return 1; //1 means tie
   }
   else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') || //check for player losing
   (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
   (playerSelection === 'Rock' && computerSelection === 'Paper')) {
-    return ('You Lose! ' + computerSelection + ' beats ' + playerSelection);
+    //return ('You Lose! ' + computerSelection + ' beats ' + playerSelection);
+    return 2; //2 means computer wins the round
   }
-  return ('You Win! ' + playerSelection + ' beats ' + computerSelection); //if above conditions are not met, this means that player wins
+  //return ('You Win! ' + playerSelection + ' beats ' + computerSelection); //if above conditions are not met, this means that player wins
+  return 3; //3 means player wins the round
 }
 
 function game() {
   let playerScore = 0;
   let computerScore = 0;
   for (let i = 0; i < 5; i++) {
-    console.log(i);
+    let computerSelection = getComputerChoice();
+    let playerSelection = getPlayerChoice();
+    let roundOutcome = singleRound(playerSelection, computerSelection);
+    switch (roundOutcome) {
+      case 0:
+        console.log('Play the game, man...');
+        break;
+      case 1:
+        console.log('Tie!');
+        break;
+      case 2:
+        computerScore += 1;
+        console.log('You Lose! ' + computerSelection + ' beats ' + playerSelection);
+        break;
+      case 3:
+        playerScore += 1;
+        console.log('You Win! ' + playerSelection + ' beats ' + computerSelection);
+        break;
+    }
+  }
+  console.log('GAME SCORE:');
+  if (playerScore > computerScore) {
+    console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
+  }
+  else if (playerScore < computerScore) {
+    console.log('You lost the game ' + computerScore + ' to ' + playerScore + ' :c')
+  }
+  else {
+    console.log('Tie (' + playerScore + ' to ' + computerScore + ')');
   }
 }
+
+game();
