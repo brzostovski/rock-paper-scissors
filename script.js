@@ -19,9 +19,9 @@ Algorithm:
 */
 
 function getComputerChoice() {
-  let randomNumber = Math.floor(Math.random() * 3); //generate random value between 0 and 1; multiply it by 3 and round down to whole number
+  let randomNumber = Math.floor(Math.random() * 3);
   let choice = "";
-  switch (randomNumber) { //assign rock-paper-scissors to values 0-1-2
+  switch (randomNumber) {
     case 0:
       choice = 'Rock';
       break;
@@ -38,75 +38,71 @@ function getComputerChoice() {
 function checkPlayerChoice (choice) {
   return ((choice === 'Rock' || choice === 'Paper' || choice === 'Scissors') ?
     choice :
-    0 ) //check if choice is rock-paper-scissors and return it if true or return 0 if false
+    0 );
 }
 
 function uppercaseFirstLetter (word) {
-  let lowercaseWord = word.toLowerCase(); //make word lowercase
-  let uppercaseFirstLetter = (lowercaseWord.slice(0, 1)).toUpperCase(); //slice off first letter and make it uppercase
-  let restOfWord = lowercaseWord.slice(1); //get rest of the word (exclude first letter)
-  return (uppercaseFirstLetter + restOfWord); //join first (uppercase) letter and rest of the word (lowercase)
+  let lowercaseWord = word.toLowerCase();
+  let uppercaseFirstLetter = (lowercaseWord.slice(0, 1)).toUpperCase();
+  let restOfWord = lowercaseWord.slice(1);
+  return (uppercaseFirstLetter + restOfWord);
 }
 
 function getPlayerChoice() {
-  let playerInput = prompt('Input your choice:'); //ask player for input in prompt
+  let playerInput = prompt('Input your choice:');
   return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ?
     uppercaseFirstLetter(playerInput) :
-    0); //check if input is valid (rock-paper-scissors). If yes return it in correct format
+    0);
 }
 
 function singleRound (playerSelection, computerSelection) {
-  if (!playerSelection) {
-    //return 'play the game man'; //return that if player input is not valid
-    return 0; //0 means invalid input
+  if (!playerSelection) { //if player selection function returns 'false' it means invalid input and round cannot be played
+    return 0;
   }
-  else if (playerSelection === computerSelection) { //check for tie
-    //return 'Tie!';
-    return 1; //1 means tie
+  else if (playerSelection === computerSelection) {
+    return 1;
   }
-  else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') || //check for player losing
+  else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') ||
   (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
   (playerSelection === 'Rock' && computerSelection === 'Paper')) {
-    //return ('You Lose! ' + computerSelection + ' beats ' + playerSelection);
-    return 2; //2 means computer wins the round
+    return 2;
   }
-  //return ('You Win! ' + playerSelection + ' beats ' + computerSelection); //if above conditions are not met, this means that player wins
-  return 3; //3 means player wins the round
+  return 3; //if player didn't tie or lose, they had to win
 }
 
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-  for (let i = 0; i < 5; i++) { //loop to play five rounds of game
-    let computerSelection = getComputerChoice(); //store computer choice
-    let playerSelection = getPlayerChoice(); //store player choice
+  for (let i = 0; i < 5; i++) {
+    let computerSelection = getComputerChoice();
+    let playerSelection = getPlayerChoice();
     let roundOutcome = singleRound(playerSelection, computerSelection);
     switch (roundOutcome) {
       case 0:
-        console.log('Play the game, man...'); //output this if player input is invalid
+        console.log('Play the game, man...');
         break;
       case 1:
-        console.log('Tie!'); //tie
+        console.log('Tie!');
         break;
       case 2:
-        computerScore += 1; //update computer score
-        console.log('You Lose! ' + computerSelection + ' beats ' + playerSelection); //output to show that player looses
+        computerScore += 1;
+        console.log('You Lose! ' + computerSelection + ' beats ' + playerSelection);
         break;
       case 3:
-        playerScore += 1; //update player score
-        console.log('You Win! ' + playerSelection + ' beats ' + computerSelection); //output to show that player wins
+        playerScore += 1;
+        console.log('You Win! ' + playerSelection + ' beats ' + computerSelection);
         break;
     }
   }
-  console.log('GAME SCORE:'); //visual distinction between round outcomes ond the game outcome
+  console.log('GAME SCORE:');
   if (playerScore > computerScore) {
-    console.log('You won the game ' + playerScore + ' to ' + computerScore + '!'); //message if player is winner (with scores)
+    console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
   }
   else if (playerScore < computerScore) {
-    console.log('You lost the game ' + computerScore + ' to ' + playerScore + ' :c') //message if player is loser (with scores)
+    console.log('You lost the game ' + computerScore + ' to ' + playerScore + ' :c');
   }
   else {
-    console.log('Tie (' + playerScore + ' to ' + computerScore + ')'); //message in case of tie (with scores)
+    console.log('Tie (' + playerScore + ' to ' + computerScore + ')');
   }
 }
 
