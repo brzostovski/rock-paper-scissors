@@ -73,36 +73,36 @@ function singleRound (playerSelection, computerSelection) {
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    let computerSelection = getComputerChoice();
-    let playerSelection = getPlayerChoice();
+  for (let i = 0; i < 5; i++) { //loop to play five rounds of game
+    let computerSelection = getComputerChoice(); //store computer choice
+    let playerSelection = getPlayerChoice(); //store player choice
     let roundOutcome = singleRound(playerSelection, computerSelection);
     switch (roundOutcome) {
       case 0:
-        console.log('Play the game, man...');
+        console.log('Play the game, man...'); //output this if player input is invalid
         break;
       case 1:
-        console.log('Tie!');
+        console.log('Tie!'); //tie
         break;
       case 2:
-        computerScore += 1;
-        console.log('You Lose! ' + computerSelection + ' beats ' + playerSelection);
+        computerScore += 1; //update computer score
+        console.log('You Lose! ' + computerSelection + ' beats ' + playerSelection); //output to show that player looses
         break;
       case 3:
-        playerScore += 1;
-        console.log('You Win! ' + playerSelection + ' beats ' + computerSelection);
+        playerScore += 1; //update player score
+        console.log('You Win! ' + playerSelection + ' beats ' + computerSelection); //output to show that player wins
         break;
     }
   }
-  console.log('GAME SCORE:');
+  console.log('GAME SCORE:'); //visual distinction between round outcomes ond the game outcome
   if (playerScore > computerScore) {
-    console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
+    console.log('You won the game ' + playerScore + ' to ' + computerScore + '!'); //message if player is winner (with scores)
   }
   else if (playerScore < computerScore) {
-    console.log('You lost the game ' + computerScore + ' to ' + playerScore + ' :c')
+    console.log('You lost the game ' + computerScore + ' to ' + playerScore + ' :c') //message if player is loser (with scores)
   }
   else {
-    console.log('Tie (' + playerScore + ' to ' + computerScore + ')');
+    console.log('Tie (' + playerScore + ' to ' + computerScore + ')'); //message in case of tie (with scores)
   }
 }
 
