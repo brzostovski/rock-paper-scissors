@@ -36,7 +36,9 @@ function getComputerChoice() {
 }
 
 function checkPlayerChoice (choice) {
-  return ((choice === 'Rock' || choice === 'Paper' || choice === 'Scissors') ? choice : 0 ) //check if choice is rock-paper-scissors and return it if true or return 0 if false
+  return ((choice === 'Rock' || choice === 'Paper' || choice === 'Scissors') ?
+    choice :
+    0 ) //check if choice is rock-paper-scissors and return it if true or return 0 if false
 }
 
 function uppercaseFirstLetter (word) {
@@ -48,7 +50,9 @@ function uppercaseFirstLetter (word) {
 
 function getPlayerChoice() {
   let playerInput = prompt('Input your choice:'); //ask player for input in prompt
-  return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ? uppercaseFirstLetter(playerInput) : 0); //check if input is valid (rock-paper-scissors). If yes return it in correct format
+  return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ?
+    uppercaseFirstLetter(playerInput) :
+    0); //check if input is valid (rock-paper-scissors). If yes return it in correct format
 }
 
 function singleRound (playerSelection, computerSelection) {
