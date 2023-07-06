@@ -99,7 +99,7 @@ function game() {
     console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
   }
   else if (playerScore < computerScore) {
-    console.log('You lost the game ' + computerScore + ' to ' + playerScore + ' :c');
+    console.log('You lost the game ' + playerScore + ' to ' + computerScore + ' :c');
   }
   else {
     console.log('Tie (' + playerScore + ' to ' + computerScore + ')');
