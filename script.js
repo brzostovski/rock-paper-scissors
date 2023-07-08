@@ -74,7 +74,7 @@ function game() {
         break;
     }
   }
-  console.log('GAME SCORE:');
+  console.log('GAME RESULT:');
   if (playerScore > computerScore) {
     console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
   }
