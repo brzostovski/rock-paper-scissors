@@ -19,12 +19,20 @@ body {
   gap: 32px;
 }
 
-.tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn {
   border: solid 1px white;
   width: 130px;
   height: 80px;
-  flex: 0 0 auto;
+}
+
+button {
+  transition-duration: 0.07s;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(1.1);
 }
