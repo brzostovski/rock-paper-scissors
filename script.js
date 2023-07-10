@@ -53,7 +53,7 @@ function singleRound (playerSelection, computerSelection) {
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-  for (let i = 0; i < 5; i++) {
+  //for (let i = 0; i < 5; i++) {
     let computerSelection = getComputerChoice();
     let playerSelection = getPlayerChoice();
     let roundOutcome = singleRound(playerSelection, computerSelection);
@@ -73,7 +73,7 @@ function game() {
         console.log('You Win! ' + playerSelection + ' beats ' + computerSelection);
         break;
     }
-  }
+  //}
   console.log('GAME RESULT:');
   if (playerScore > computerScore) {
     console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
