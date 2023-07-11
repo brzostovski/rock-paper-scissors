@@ -70,11 +70,30 @@ function test() {
   const btns = document.querySelectorAll('.game-btn');
   const result = document.querySelector('.result');
 
+  let playerScore = 0;
+  let computerScore = 0;
+
   btns.forEach((btn) => {
     btn.addEventListener('click', function(e) {
-      roundOutcome = singleRound(e.target.id, getComputerChoice());
-      console.log(roundOutcome);
-      result.textContent = roundOutcome;
+      let computerSelection = getComputerChoice();
+      let playerSelection = e.target.id;
+      roundOutcome = singleRound(playerSelection, computerSelection);
+      switch (roundOutcome) {
+        case 0:
+          result.textContent = 'Play the game, man...';
+          break;
+        case 1:
+          result.textContent = 'Tie!';
+          break;
+        case 2:
+          computerScore += 1;
+          result.textContent = 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+          break;
+        case 3:
+          playerScore += 1;
+          result.textContent = 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+          break;
+      }
     })
   })
 }
