@@ -34,12 +34,15 @@ function uppercaseFirstLetter (word) {
   return (uppercaseFirstLetter + restOfWord);
 }
 
+const container = document.querySelector('.container');
 const btns = document.querySelectorAll('.game-btn');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
 
 let playerScore = 0;
 let computerScore = 0;
+
+score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`;
 
 btns.forEach((btn) => {
   btn.addEventListener('click', function(e) {
@@ -59,11 +62,19 @@ btns.forEach((btn) => {
         result.textContent = 'You Win! ' + uppercaseFirstLetter(playerSelection) + ' beats ' + computerSelection;
         break;
     }
-    score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`
+
+    score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`;
+
     if ((playerScore >= 5) || (computerScore >= 5)) {
+
+      btns.forEach((btn) => {
+        btn.remove();
+      })
+
       result.textContent = 'GAME OVER';
+
       if (playerScore > computerScore) {
-        score.textContent = `YOU WIN ${playerScore} to ${computerScore}`;
+        score.textContent = `YOU WIN ${playerScore} TO ${computerScore}`;
       } else {
         score.textContent = `YOU LOSE ${computerScore} TO ${playerScore}`;
       }
