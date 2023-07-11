@@ -34,42 +34,6 @@ function uppercaseFirstLetter (word) {
   return (uppercaseFirstLetter + restOfWord);
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  //for (let i = 0; i < 5; i++) {
-    let computerSelection = getComputerChoice();
-    let playerSelection = getPlayerChoice();
-    let roundOutcome = singleRound(playerSelection, computerSelection);
-    switch (roundOutcome) {
-      case 0:
-        console.log('Play the game, man...');
-        break;
-      case 1:
-        console.log('Tie!');
-        break;
-      case 2:
-        computerScore += 1;
-        console.log('You Lose! ' + computerSelection + ' beats ' + playerSelection);
-        break;
-      case 3:
-        playerScore += 1;
-        console.log('You Win! ' + playerSelection + ' beats ' + computerSelection);
-        break;
-    }
-  //}
-  console.log('GAME RESULT:');
-  if (playerScore > computerScore) {
-    console.log('You won the game ' + playerScore + ' to ' + computerScore + '!');
-  }
-  else if (playerScore < computerScore) {
-    console.log('You lost the game ' + playerScore + ' to ' + computerScore + ' :c');
-  }
-  else {
-    console.log('Tie (' + playerScore + ' to ' + computerScore + ')');
-  }
-}
-
 const btns = document.querySelectorAll('.game-btn');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
