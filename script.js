@@ -15,13 +15,6 @@ function getComputerChoice() {
   return choice;
 }
 
-function getPlayerChoice() {
-  const playerInput = prompt('Input your choice:').toLowerCase();
-  return ((playerInput != 0) ?
-    playerInput :
-    0);
-}
-
 function singleRound (playerSelection, computerSelection) {
   if (!playerSelection) { //if player selection function returns 'false' it means invalid input and round cannot be played
     return 0;
@@ -73,31 +66,15 @@ function game() {
   }
 }
 
-const btns = document.querySelectorAll('.game-btn');
-btns.forEach((btn) => {
-  btn.addEventListener('click', function(e) {
-    console.log(singleRound(e.target.id, getComputerChoice()));
+function test() {
+  const btns = document.querySelectorAll('.game-btn');
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', function(e) {
+      roundOutcome = singleRound(e.target.id, getComputerChoice());
+      console.log(roundOutcome);
+    })
   })
-})
+}
 
-/*const btnRock = document.querySelector('#rock');
-const btnPaper = document.querySelector('#paper');
-const btnScissors = document.querySelector('#scissors')
-
-btnRock.addEventListener('click', () => {
-  console.log(singleRound('rock', getComputerChoice()));
-})
-
-btnPaper.addEventListener('click', () => {
-  console.log(singleRound('paper', getComputerChoice()));
-})
-
-btnScissors.addEventListener('click', () => {
-  console.log(singleRound('scissors', getComputerChoice()));
-})
-
-btnRock.addEventListener('click', function(e) {
-  console.log(e.target);
-})*/
-
-//game();
+test();
