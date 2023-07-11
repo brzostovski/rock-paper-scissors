@@ -73,11 +73,20 @@ function game() {
   }
 }
 
-function showClick() {
-  console.log('click');
-}
+const btnRock = document.querySelector('#rock');
+const btnPaper = document.querySelector('#paper');
+const btnScissors = document.querySelector('#scissors')
 
-const btns = document.querySelectorAll('.game-btn');
-btns.forEach((btn) => {
-  btn.addEventListener('click', showClick)
+btnRock.addEventListener('click', () => {
+  console.log(singleRound('rock', getComputerChoice()));
 })
+
+btnPaper.addEventListener('click', () => {
+  console.log(singleRound('paper', getComputerChoice()));
+})
+
+btnScissors.addEventListener('click', () => {
+  console.log(singleRound('scissors', getComputerChoice()));
+})
+
+game();
