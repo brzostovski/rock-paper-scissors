@@ -16,10 +16,7 @@ function getComputerChoice() {
 }
 
 function singleRound (playerSelection, computerSelection) {
-  if (!playerSelection) { //if player selection function returns 'false' it means invalid input and round cannot be played
-    return 0;
-  }
-  else if (playerSelection === computerSelection) {
+  if (playerSelection === computerSelection) {
     return 1;
   }
   else if ((playerSelection === 'paper' && computerSelection === 'scissors') ||
@@ -79,9 +76,6 @@ function test() {
       let playerSelection = e.target.id;
       roundOutcome = singleRound(playerSelection, computerSelection);
       switch (roundOutcome) {
-        case 0:
-          result.textContent = 'Play the game, man...';
-          break;
         case 1:
           result.textContent = 'Tie!';
           break;
