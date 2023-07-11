@@ -73,7 +73,14 @@ function game() {
   }
 }
 
-const btnRock = document.querySelector('#rock');
+const btns = document.querySelectorAll('.game-btn');
+btns.forEach((btn) => {
+  btn.addEventListener('click', function(e) {
+    console.log(singleRound(e.target.id, getComputerChoice()));
+  })
+})
+
+/*const btnRock = document.querySelector('#rock');
 const btnPaper = document.querySelector('#paper');
 const btnScissors = document.querySelector('#scissors')
 
@@ -89,4 +96,8 @@ btnScissors.addEventListener('click', () => {
   console.log(singleRound('scissors', getComputerChoice()));
 })
 
-game();
+btnRock.addEventListener('click', function(e) {
+  console.log(e.target);
+})*/
+
+//game();
