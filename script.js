@@ -27,6 +27,13 @@ function singleRound (playerSelection, computerSelection) {
   return 3; //if player didn't tie or lose, they had to win
 }
 
+function uppercaseFirstLetter (word) {
+  let lowercaseWord = word.toLowerCase();
+  let uppercaseFirstLetter = (lowercaseWord.slice(0, 1)).toUpperCase();
+  let restOfWord = lowercaseWord.slice(1);
+  return (uppercaseFirstLetter + restOfWord);
+}
+
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -82,11 +89,11 @@ function test() {
           break;
         case 2:
           computerScore += 1;
-          result.textContent = 'You Lose! ' + computerSelection + ' beats ' + playerSelection;
+          result.textContent = 'You Lose! ' + uppercaseFirstLetter(computerSelection) + ' beats ' + playerSelection;
           break;
         case 3:
           playerScore += 1;
-          result.textContent = 'You Win! ' + playerSelection + ' beats ' + computerSelection;
+          result.textContent = 'You Win! ' + uppercaseFirstLetter(playerSelection) + ' beats ' + computerSelection;
           break;
       }
       score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`
