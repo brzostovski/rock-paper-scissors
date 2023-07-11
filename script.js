@@ -3,35 +3,22 @@ function getComputerChoice() {
   let choice = "";
   switch (randomNumber) {
     case 0:
-      choice = 'Rock';
+      choice = 'rock';
       break;
     case 1:
-      choice = 'Paper';
+      choice = 'paper';
       break;
     case 2:
-      choice = 'Scissors';
+      choice = 'scissors';
       break;
   }
   return choice;
 }
 
-function checkPlayerChoice (choice) {
-  return ((choice === 'Rock' || choice === 'Paper' || choice === 'Scissors') ?
-    choice :
-    0 );
-}
-
-function uppercaseFirstLetter (word) {
-  let lowercaseWord = word.toLowerCase();
-  let uppercaseFirstLetter = (lowercaseWord.slice(0, 1)).toUpperCase();
-  let restOfWord = lowercaseWord.slice(1);
-  return (uppercaseFirstLetter + restOfWord);
-}
-
 function getPlayerChoice() {
-  let playerInput = prompt('Input your choice:');
-  return ((checkPlayerChoice(uppercaseFirstLetter(playerInput)) != 0) ?
-    uppercaseFirstLetter(playerInput) :
+  const playerInput = prompt('Input your choice:').toLowerCase();
+  return ((playerInput != 0) ?
+    playerInput :
     0);
 }
 
@@ -42,9 +29,9 @@ function singleRound (playerSelection, computerSelection) {
   else if (playerSelection === computerSelection) {
     return 1;
   }
-  else if ((playerSelection === 'Paper' && computerSelection === 'Scissors') ||
-  (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
-  (playerSelection === 'Rock' && computerSelection === 'Paper')) {
+  else if ((playerSelection === 'paper' && computerSelection === 'scissors') ||
+  (playerSelection === 'scissors' && computerSelection === 'rock') ||
+  (playerSelection === 'rock' && computerSelection === 'paper')) {
     return 2;
   }
   return 3; //if player didn't tie or lose, they had to win
@@ -86,4 +73,11 @@ function game() {
   }
 }
 
-game();
+function showClick() {
+  console.log('click');
+}
+
+const btns = document.querySelectorAll('.game-btn');
+btns.forEach((btn) => {
+  btn.addEventListener('click', showClick)
+})
