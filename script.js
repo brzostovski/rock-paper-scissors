@@ -70,35 +70,31 @@ function game() {
   }
 }
 
-function test() {
-  const btns = document.querySelectorAll('.game-btn');
-  const result = document.querySelector('.result');
-  const score = document.querySelector('.score');
+const btns = document.querySelectorAll('.game-btn');
+const result = document.querySelector('.result');
+const score = document.querySelector('.score');
 
-  let playerScore = 0;
-  let computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-  btns.forEach((btn) => {
-    btn.addEventListener('click', function(e) {
-      let computerSelection = getComputerChoice();
-      let playerSelection = e.target.id;
-      roundOutcome = singleRound(playerSelection, computerSelection);
-      switch (roundOutcome) {
-        case 1:
-          result.textContent = 'Tie!';
-          break;
-        case 2:
-          computerScore += 1;
-          result.textContent = 'You Lose! ' + uppercaseFirstLetter(computerSelection) + ' beats ' + playerSelection;
-          break;
-        case 3:
-          playerScore += 1;
-          result.textContent = 'You Win! ' + uppercaseFirstLetter(playerSelection) + ' beats ' + computerSelection;
-          break;
-      }
-      score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`
-    })
+btns.forEach((btn) => {
+  btn.addEventListener('click', function(e) {
+    let computerSelection = getComputerChoice();
+    let playerSelection = e.target.id;
+    roundOutcome = singleRound(playerSelection, computerSelection);
+    switch (roundOutcome) {
+      case 1:
+        result.textContent = 'Tie!';
+        break;
+      case 2:
+        computerScore += 1;
+        result.textContent = 'You Lose! ' + uppercaseFirstLetter(computerSelection) + ' beats ' + playerSelection;
+        break;
+      case 3:
+        playerScore += 1;
+        result.textContent = 'You Win! ' + uppercaseFirstLetter(playerSelection) + ' beats ' + computerSelection;
+        break;
+    }
+    score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`
   })
-}
-
-test();
+})
