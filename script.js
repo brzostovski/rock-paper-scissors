@@ -65,7 +65,7 @@ btns.forEach((btn) => {
       if (playerScore > computerScore) {
         score.textContent = `YOU WIN ${playerScore} to ${computerScore}`;
       } else {
-        score.textContent = `YOU LOSE ${computerScore} to ${playerScore}`;
+        score.textContent = `YOU LOSE ${computerScore} TO ${playerScore}`;
       }
       playerScore = 0;
       computerScore = 0;
