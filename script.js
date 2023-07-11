@@ -17,14 +17,14 @@ function getComputerChoice() {
 
 function singleRound (playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-    return 1;
+    return 'tie';
   }
   else if ((playerSelection === 'paper' && computerSelection === 'scissors') ||
   (playerSelection === 'scissors' && computerSelection === 'rock') ||
   (playerSelection === 'rock' && computerSelection === 'paper')) {
-    return 2;
+    return 'playerLose';
   }
-  return 3; //if player didn't tie or lose, they had to win
+  return 'playerWin'; //if player didn't tie or lose, they had to win
 }
 
 function uppercaseFirstLetter (word) {
@@ -34,7 +34,7 @@ function uppercaseFirstLetter (word) {
   return (uppercaseFirstLetter + restOfWord);
 }
 
-const container = document.querySelector('.container');
+const container = document.querySelector('.tiles-container');
 const btns = document.querySelectorAll('.game-btn');
 const result = document.querySelector('.result');
 const score = document.querySelector('.score');
@@ -50,14 +50,14 @@ btns.forEach((btn) => {
     let playerSelection = e.target.id;
     roundOutcome = singleRound(playerSelection, computerSelection);
     switch (roundOutcome) {
-      case 1:
+      case 'tie':
         result.textContent = 'Tie!';
         break;
-      case 2:
+      case 'playerLose':
         computerScore += 1;
         result.textContent = 'You Lose! ' + uppercaseFirstLetter(computerSelection) + ' beats ' + playerSelection;
         break;
-      case 3:
+      case 'playerWin':
         playerScore += 1;
         result.textContent = 'You Win! ' + uppercaseFirstLetter(playerSelection) + ' beats ' + computerSelection;
         break;
@@ -68,7 +68,7 @@ btns.forEach((btn) => {
     if ((playerScore >= 5) || (computerScore >= 5)) {
 
       btns.forEach((btn) => {
-        btn.remove();
+        btn.style.display = 'none'; //add inline style to hide buttons
       })
 
       result.textContent = 'GAME OVER';
@@ -78,8 +78,24 @@ btns.forEach((btn) => {
       } else {
         score.textContent = `YOU LOSE ${computerScore} TO ${playerScore}`;
       }
-      playerScore = 0;
+      playerScore = 0; //reset scores in anticipation of reset
       computerScore = 0;
+
+      const playAgain = document.createElement('button');
+      playAgain.classList.add('game-btn');
+      playAgain.textContent = 'play again';
+      container.appendChild(playAgain);
+
+      playAgain.addEventListener('click', function() {
+        btns.forEach((btn) => {
+          btn.removeAttribute('style'); //remove inline style to show buttons again
+        })
+
+        playAgain.remove(); //delete reset button
+
+        score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`;
+        result.textContent = "";
+      })
     }
   })
 })
