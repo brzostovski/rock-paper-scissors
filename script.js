@@ -66,6 +66,7 @@ function game() {
 function test() {
   const btns = document.querySelectorAll('.game-btn');
   const result = document.querySelector('.result');
+  const score = document.querySelector('.score');
 
   let playerScore = 0;
   let computerScore = 0;
@@ -88,6 +89,7 @@ function test() {
           result.textContent = 'You Win! ' + playerSelection + ' beats ' + computerSelection;
           break;
       }
+      score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`
     })
   })
 }
