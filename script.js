@@ -68,11 +68,13 @@ function game() {
 
 function test() {
   const btns = document.querySelectorAll('.game-btn');
+  const result = document.querySelector('.result');
 
   btns.forEach((btn) => {
     btn.addEventListener('click', function(e) {
       roundOutcome = singleRound(e.target.id, getComputerChoice());
       console.log(roundOutcome);
+      result.textContent = roundOutcome;
     })
   })
 }
