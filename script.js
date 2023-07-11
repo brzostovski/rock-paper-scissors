@@ -96,5 +96,15 @@ btns.forEach((btn) => {
         break;
     }
     score.textContent = `Computer score: ${computerScore}; Player score: ${playerScore}`
+    if ((playerScore >= 5) || (computerScore >= 5)) {
+      result.textContent = 'GAME OVER';
+      if (playerScore > computerScore) {
+        score.textContent = `YOU WIN ${playerScore} to ${computerScore}`;
+      } else {
+        score.textContent = `YOU LOSE ${computerScore} to ${playerScore}`;
+      }
+      playerScore = 0;
+      computerScore = 0;
+    }
   })
 })
